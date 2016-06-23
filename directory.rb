@@ -8,7 +8,7 @@ def input_students
     if students.count == 1
       puts "Now we have 1 great student"
     else
-      puts "Now we have #{students.count} students"
+      puts "Now we have #{students.count} great students"
   end
     name = gets.chomp
   end
