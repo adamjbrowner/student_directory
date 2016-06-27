@@ -7,46 +7,48 @@ def load_students(filename = "students.csv")
     @students << {name: name, cohort: cohort.to_sym}
   end
   file.close
+  puts "File successfully loaded!".center(50)
 end
 
-def try_load_students
+def try_load_students #Loads students.csv at beggining of program
   filename = ARGV.first
   return if filename.nil?
   if File.exists?(filename)
     load_students(filename)
-    puts "Loaded #{@students.count} from #{filename}"
+    puts "Loaded #{@students.count} from #{filename}".center(50)
   else
     puts "Sorry, #{filename} doesn't exist."
   end
 end
 
-def input_students
-  puts "Please enter the names of the students"
-  puts "To finish, just hit return twice"
+def input_students #Adds students to array
+  puts "Please enter the names of the students".center(50)
+  puts "To finish, just hit return twice".center(50)
   name = STDIN.gets.chomp
   while !name.empty? do
     @students << {:name => name, :cohort => :november}
-    puts "Now we have #{@students.count} great student(s)"
+    puts "Input successful!".center(50)
+    puts "Now we have #{@students.count} great student(s)".center(50)
     name = gets.chomp
   end
 end
 
-def print_header
-  puts "The students of Villains Academy"
-  puts "-------------"
+def print_header #Prints header
+  puts "The students of Villains Academy".center(50)
+  puts "-------------".center(50)
 end
 
 def print_students_list(students)
   @students.each do |students|
-    puts "#{students[:name]} (#{students[:cohort].capitalize} cohort)"
+    puts "#{students[:name]} (#{students[:cohort].capitalize} cohort)".center(50)
   end
 end
 
 def print_footer(names)
   if names.count == 1
-    puts "Overall, we have 1 great student"
+    puts "Overall, we have 1 great student".center(50)
   else
-    puts "Overall, we have #{names.count} great students"
+    puts "Overall, we have #{names.count} great students".center(50)
   end
 end
 
@@ -77,7 +79,7 @@ def process(selection)
   when "9"
     exit
   else
-    puts "I don't know what that means, try again"
+    puts "I don't know what that means, try again".center(50)
   end
 end
 
@@ -98,6 +100,7 @@ def save_students
     file.puts csv_line
   end
   file.close
+  puts "File successfully saved"
 end
 
 try_load_students
